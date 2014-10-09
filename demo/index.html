@@ -5,22 +5,26 @@
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/leaflet.css" />
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-	<!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" /><![endif]-->
 </head>
 <body>
 	<a href="https://github.com/bmcbride/PHP-Database-GeoJSON"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 	<div id="map" style="width: 600px; height: 400px"></div>
 	<p>This example demonstrates the ability to view layers from an SQLite database file as GeoJSON layers.</p>
     <p>
+    <a href="testjsondecode.php">json decode test</a>
+    <a href="testgeophp.php">Test geophp</a>
+     <a href="testpostgis.php">Test postgis</a>
+     
+     <a href="../mysql_geojson.php">Mysql test</a>
         <ul>
             <li>CDTA data downloaded from the NYS GIS Clearinghouse: <a href="http://gis.ny.gov/gisdata/inventories/member.cfm?OrganizationID=98" target="_blank">http://gis.ny.gov/gisdata/inventories/member.cfm?OrganizationID=98</a>.</li>
             <li>The downloaded shapefiles were exported to SQLite using <a href="http://www.qgis.org/" target="_blank">Quantum GIS (QGIS)</a>.</li>
         </ul>
     </p>
-	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="javascript/leaflet.js"></script>
+	<script src="javascript/jquery-1.8.2.min.js"></script>
 	<script>
 		var map;
 
@@ -62,6 +66,7 @@
 			  }
 			}
 		});
+		console.info("Message from index: before call to bikeracks");
 		$.getJSON("bikeRacks_geojson.php", function (data) {
 	  		bikeRacks.addData(data);
 		}).complete(function () {
